@@ -291,4 +291,75 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   createScrollTopButton();
+});
+
+// Mobile Menu Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
+    let mobileMenu = document.querySelector('.mobile-menu');
+
+    // Function to create the mobile menu if it doesn't exist
+    function createMobileMenu() {
+        if (!mobileMenu) {
+            mobileMenu = document.createElement('div');
+            mobileMenu.classList.add('mobile-menu');
+            
+            const closeIcon = document.createElement('div');
+            closeIcon.classList.add('close-icon');
+            closeIcon.innerHTML = '<i class="fas fa-times"></i>';
+            mobileMenu.appendChild(closeIcon);
+
+            // Clone menu items from desktop nav
+            const menuItemsContainer = document.querySelector('.menu-items .glass-effect');
+            if (menuItemsContainer) {
+                const links = menuItemsContainer.querySelectorAll('a');
+                links.forEach(link => {
+                    const clonedLink = link.cloneNode(true);
+                    mobileMenu.appendChild(clonedLink);
+                });
+            }
+            
+            // Clone social icons from desktop nav
+            const socialIconsContainer = document.querySelector('.social-icons .glass-effect');
+            if (socialIconsContainer) {
+                const socialDiv = document.createElement('div');
+                socialDiv.style.marginTop = 'auto'; // Push social icons to bottom
+                socialDiv.style.paddingTop = '2rem';
+                socialDiv.style.display = 'flex';
+                socialDiv.style.justifyContent = 'center';
+                socialDiv.style.gap = '1.5rem';
+                socialDiv.style.fontSize = '1.5rem';
+
+                const icons = socialIconsContainer.querySelectorAll('a');
+                 icons.forEach(icon => {
+                    const clonedIcon = icon.cloneNode(true);
+                    socialDiv.appendChild(clonedIcon);
+                 });
+                 mobileMenu.appendChild(socialDiv);
+            }
+
+            document.body.appendChild(mobileMenu);
+            
+             // Add event listener for the close icon
+            closeIcon.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+            
+             // Add event listeners for the mobile menu links to close menu on click
+             const mobileLinks = mobileMenu.querySelectorAll('a');
+             mobileLinks.forEach(link => {
+                 link.addEventListener('click', () => {
+                     mobileMenu.classList.remove('active');
+                 });
+             });
+        }
+    }
+
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            createMobileMenu(); // Ensure menu exists
+            mobileMenu.classList.toggle('active');
+        });
+    }
 }); 
