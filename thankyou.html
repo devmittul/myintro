@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Message Sent</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .thank-you-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .thank-you-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .thank-you-icon {
+            font-size: 5rem;
+            color: #0cffe1;
+            margin-bottom: 1rem;
+        }
+        
+        .thank-you-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #ff61d8, #9961ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .thank-you-message {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+        }
+        
+        .return-home {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            background: linear-gradient(to right, #4d79ff, #0cffe1);
+            color: #ffffff;
+            margin-top: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .return-home:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(12, 255, 225, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    
+    <div class="thank-you-container">
+        <div class="thank-you-card">
+            <div class="thank-you-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1 class="thank-you-title">Thank You!</h1>
+            <p class="thank-you-message">Your message has been sent successfully. I'll get back to you as soon as possible.</p>
+            <a href="index.html" class="return-home">Return to Homepage</a>
+        </div>
+    </div>
+
+    <script>
+        // Add some simple animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.querySelector('.thank-you-card');
+            
+            setTimeout(() => {
+                card.style.transition = 'transform 1s ease, opacity 1s ease';
+                card.style.transform = 'translateY(0)';
+                card.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html> 

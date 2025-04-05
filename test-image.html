@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Test</title>
+</head>
+<body>
+    <h1>Image Loading Test</h1>
+    
+    <div>
+        <h2>Image Test 1 (with ./)</h2>
+        <img src="./web3.jpg" width="300" height="300" alt="Test Image 1" 
+             style="border: 2px solid red;"
+             onload="console.log('Image 1 loaded successfully')"
+             onerror="console.log('Error loading image 1'); this.src='placeholder.png';">
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <h2>Image Test 2 (without ./)</h2>
+        <img src="web3.jpg" width="300" height="300" alt="Test Image 2" 
+             style="border: 2px solid blue;"
+             onload="console.log('Image 2 loaded successfully')"
+             onerror="console.log('Error loading image 2'); this.src='placeholder.png';">
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <h2>Image Test 3 (absolute path)</h2>
+        <img src="file:///E:/my%20we/1/web3.jpg" width="300" height="300" alt="Test Image 3" 
+             style="border: 2px solid green;"
+             onload="console.log('Image 3 loaded successfully')"
+             onerror="console.log('Error loading image 3'); this.src='placeholder.png';">
+    </div>
+    
+    <p>If you can see any of the above images, please use that approach in the main file.</p>
+    
+    <script>
+        // Check if images loaded successfully
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach((img, index) => {
+                img.onload = function() {
+                    console.log(`Image ${index + 1} loaded successfully`);
+                    document.body.insertAdjacentHTML('beforeend', 
+                        `<p>Image ${index + 1} loaded successfully!</p>`);
+                };
+                img.onerror = function() {
+                    console.log(`Image ${index + 1} failed to load`);
+                    document.body.insertAdjacentHTML('beforeend', 
+                        `<p style="color: red;">Image ${index + 1} failed to load!</p>`);
+                };
+            });
+        });
+    </script>
+</body>
+</html> 
