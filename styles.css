@@ -1382,4 +1382,11 @@ footer {
   100% {
     transform: rotate(360deg) translateX(140px) rotate(-360deg);
   }
+}
+
+/* Desktop-specific Contact Spacing */
+@media (min-width: 769px) {
+  .contact-container {
+    gap: 5rem; /* Increased gap for desktop */
+  }
 } 
