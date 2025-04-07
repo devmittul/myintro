@@ -540,16 +540,107 @@ nav {
 
 .about-cards {
   display: flex;
-  justify-content: flex-start;
-  gap: 15px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 1.2rem;
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto 0 auto;
-  padding: 1rem 0;
-  margin-left: 5%;
+  margin-left: 0;
+  padding: 1rem 1rem 1.5rem 8px;
+  justify-content: flex-start;
+}
+
+/* Desktop styling for about cards scrollbar */
+@media (min-width: 769px) {
+  .about-cards {
+    scrollbar-width: thin;
+    scrollbar-color: var(--crayon-teal) var(--bg-tertiary);
+    padding: 1.5rem;
+    margin-top: 3rem;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
+  
+  .about-content {
+    gap: 3rem;
+    padding: 0 2rem;
+  }
+  
+  .about-text {
+    margin-bottom: 3rem;
+  }
+  
+  .about-text p {
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+  
+  .stats {
+    gap: 3rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  
+  .about .section-title {
+    margin-bottom: 3rem;
+  }
+  
+  .stat-item {
+    margin-right: 0;
+  }
+  
+  .about-cards::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .about-cards::-webkit-scrollbar-track {
+    background-color: var(--bg-tertiary);
+    border-radius: 10px;
+  }
+  
+  .about-cards::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, var(--crayon-blue), var(--crayon-teal));
+    border-radius: 10px;
+  }
+  
+  .about-card {
+    transform: translateY(0);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+  }
+  
+  .about-card::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    width: 70%;
+    height: 10px;
+    transform: translateX(-50%);
+    background: linear-gradient(to right, var(--crayon-blue), var(--crayon-teal));
+    border-radius: 50%;
+    opacity: 0;
+    filter: blur(10px);
+    transition: opacity 0.4s ease;
+  }
+  
+  .about-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .about-card:hover::after {
+    opacity: 0.7;
+  }
 }
 
 .about-card {
+  min-width: 200px;
+  width: 200px;
+  flex: 0 0 auto;
+  margin-left: 0 !important;
+  height: auto;
   padding: 1rem;
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
@@ -558,14 +649,10 @@ nav {
   border: 1px solid var(--glass-border);
   box-shadow: 0 4px 30px var(--glass-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 150px;
-  min-width: 150px;
-  flex: 0 0 150px;
 }
 
 .about-card:hover {
@@ -588,11 +675,6 @@ nav {
   color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.4;
-}
-
-/* Remove the first-child margin since we're shifting everything left */
-.about-card:first-child {
-  margin-left: 0;
 }
 
 /* Skills Section */
@@ -695,19 +777,34 @@ nav {
 
 /* Projects Section */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 1.2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding-top: 0.5rem;
+  width: 100%;
+  padding: 1rem 1rem 1.5rem 8px;
+  justify-content: center;
+}
+
+/* Desktop spacing for projects */
+@media (min-width: 769px) {
+  .projects-grid {
+    gap: 3rem;
+    padding: 8mm 0;
+  }
+  
+  .projects .section-title {
+    margin-bottom: 8mm;
+  }
 }
 
 .project-card {
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  max-width: 320px;
-  margin: 0 auto;
+  width: 280px;
+  min-width: 280px;
+  flex: 0 0 auto;
+  margin: 0;
+  height: auto;
 }
 
 .project-card:hover {
@@ -733,18 +830,23 @@ nav {
 }
 
 .project-info {
-  padding: 1.2rem;
+  padding: 1rem;
+  height: auto;
+  overflow: visible;
 }
 
 .project-info h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
 }
 
 .project-info p {
-  color: var(--text-secondary);
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+  overflow: visible;
+  display: block;
+  max-height: none;
 }
 
 .project-tech {
@@ -1040,19 +1142,29 @@ footer {
   }
   
   .name {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    line-height: 1.2;
   }
   
   .profession {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+    margin-bottom: 1.8rem;
   }
   
   .description {
-    margin: 0 auto 2rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding: 0 1rem;
+    margin-bottom: 2.2rem;
+    max-width: 100%;
+    min-height: 5rem;
+    overflow: visible;
   }
   
   .cta-buttons {
     justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
   
   .about-content {
@@ -1173,249 +1285,262 @@ footer {
 
 /* Media Query for Mobile */
 @media (max-width: 768px) {
-    .mobile-popup {
-        padding: 1rem;
-    }
-}
-
-/* Media Queries for Responsiveness */
-
-/* Hide hamburger by default */
-.hamburger {
-    display: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    background: var(--glass-bg);
-    border-radius: 8px;
-    border: 1px solid var(--glass-border);
-}
-
-.hamburger i {
-    color: var(--text-primary);
-}
-
-/* Tablet and smaller */
-@media (max-width: 1024px) {
-    .container {
-        padding: 0 1.5rem;
-    }
-
-    .name {
-        font-size: 3.5rem;
-    }
-
-    .profession {
-        font-size: 2rem;
-    }
-}
-
-/* Mobile specific styles */
-@media (max-width: 768px) {
     html {
-        font-size: 14px; /* Adjust base font size for mobile */
+        font-size: 14px;
     }
 
-    nav {
-        padding: 1rem 1.5rem;
-    }
-
-    .menu-items,
-    .social-icons {
-        display: none; /* Hide desktop menu and social icons */
-    }
-
-    .hamburger {
-        display: block; /* Show hamburger icon */
-    }
-
-    /* Mobile Menu Styles (Initially Hidden) */
-    .mobile-menu {
-        position: fixed;
-        top: 0;
-        right: -100%; /* Start off-screen */
-        width: 70%;
-        max-width: 300px;
-        height: 100%;
-        background: rgba(10, 10, 10, 0.95);
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-        z-index: 1001;
-        display: flex;
-        flex-direction: column;
-        padding: 4rem 2rem 2rem 2rem;
-        transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* Smooth slide */
-    }
-
-    .mobile-menu.active {
-        right: 0; /* Slide in */
-    }
-
-    .mobile-menu .close-icon {
-        position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
-        font-size: 1.8rem;
-        color: var(--text-primary);
-        cursor: pointer;
-    }
-
-    .mobile-menu a {
-        font-size: 1.2rem;
-        font-weight: 500;
-        padding: 1rem 0;
-        color: var(--text-secondary);
-        border-bottom: 1px solid var(--glass-border);
-        transition: color 0.3s ease;
-    }
-    
-    .mobile-menu a:last-child {
-        border-bottom: none;
-    }
-
-    .mobile-menu a:hover,
-    .mobile-menu a.active {
-        color: var(--crayon-teal);
-    }
-
-    /* Adjust main sections for mobile */
-    section {
-        padding: 4rem 0;
-    }
-
-    .hero {
-        height: auto; /* Adjust height */
-        padding-top: 80px; /* Adjust for fixed nav */
-        text-align: center;
-    }
-
-    .hero .container {
-        flex-direction: column; /* Stack elements vertically */
-    }
-
-    .animated-text {
-        order: 2; /* Put text below image */
-        margin-top: 2rem;
-        text-align: center;
-    }
-
-    .name {
-        font-size: 3rem;
-    }
-
-    .profession {
-        font-size: 1.8rem;
-    }
-
-    .description {
-        font-size: 1rem;
-        max-width: 90%;
-        margin: 1rem auto;
-    }
-
-    .cta-buttons {
-        justify-content: center;
-        flex-direction: column; /* Stack buttons */
-        gap: 1rem;
-        margin-top: 1.5rem;
-    }
-    
-    .cta-primary, .cta-secondary {
-        width: 80%;
-        margin: 0 auto; /* Center buttons */
-    }
-
-    .hero-image {
-        order: 1; /* Put image above text */
-        margin-bottom: 2rem;
-    }
-
-    .profile-image-container {
-        margin: 0 auto; /* Center profile image container */
-    }
-    
-    .profile-pic-container {
-         width: 250px !important; /* Override inline style for mobile */
-         height: 250px !important; /* Override inline style for mobile */
-    }
-
-    .orbiting-elements {
-        /* Optionally hide or simplify orbiting elements on mobile */
-        display: none; 
-    }
-
-    .scroll-indicator {
-        display: none; /* Hide scroll indicator */
-    }
-
-    /* About Section */
-    .about-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .stats {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-    
-    .stat-item {
-         flex-basis: 45%; /* Allow two stats per row */
-    }
-
-    .about-cards {
-        grid-template-columns: 1fr; /* Stack cards */
-        gap: 1.5rem;
-    }
-
-    /* Projects Section */
-    .projects-grid {
-        grid-template-columns: 1fr; /* Stack projects */
-        gap: 2rem;
-    }
-
-    /* Contact Section */
-    .contact-container {
-        flex-direction: column; /* Stack contact info and form */
-        gap: 2rem;
-    }
-
-    .contact-info,
-    .contact-form {
+    /* Container adjustments */
+    .container {
+        padding: 8px 1rem 0 1rem;
         width: 100%;
     }
 
-    .contact-info {
-        display: flex;
-        flex-direction: column; /* Stack contact cards */
-        gap: 1rem;
-    }
-    
-    .contact-card {
-        flex-direction: row; 
-        align-items: center;
-        text-align: left;
-    }
-    
-    .contact-icon {
-        margin-right: 1rem;
-    }
-    
-    .contact-details {
-         text-align: left;
+    /* Navigation improvements */
+    nav {
+        padding: 0.8rem 1rem;
     }
 
-    /* Footer */
-    .footer-content {
+    .hamburger {
+        display: block;
+        z-index: 1002;
+    }
+
+    /* Hero section refinements */
+    .hero {
+        min-height: 100vh;
+        padding: 6rem 1rem 3rem;
+    }
+
+    .hero .container {
+        gap: 2.5rem;
+        flex-direction: column-reverse;
+    }
+    
+    .hero-image {
+        padding-top: 50mm;
+    }
+    
+    .profile-image-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .profile-image {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 0 25px rgba(12, 255, 225, 0.4);
+        transition: transform 0.3s ease;
+    }
+    
+    .profile-image:hover {
+        transform: translateY(-8px);
+    }
+    
+    .profile-pic-container {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 50% !important;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .name {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+
+    .profession {
+        font-size: 1.4rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        padding: 0 1rem;
+        margin-bottom: 2.2rem;
+        max-width: 100%;
+        min-height: 5rem;
+        overflow: visible;
+    }
+    
+    .cta-buttons {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* About section adjustments */
+    .about {
+        margin-top: 8mm;
+    }
+    
+    .about .section-title {
+        margin-bottom: 8mm;
+    }
+    
+    .about-content {
         flex-direction: column;
         text-align: center;
-        gap: 1.5rem;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .about-text p {
+        font-size: 0.95rem;
+        max-width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+    }
+    
+    .stats {
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        gap: 1rem;
+        width: 100%;
+        margin-top: 2rem;
+    }
+    
+    .stat-item {
+         flex-basis: auto;
+         flex-grow: 0;
+         flex-shrink: 1;
+         margin-right: 0;
+         width: auto;
+         min-width: 80px;
+         text-align: center;
     }
 
-    .footer-links,
-    .footer-social {
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
+    }
+
+    .about-cards {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 1.2rem;
+        width: 100%;
+        margin-left: 0;
+        padding: 1rem 1rem 1.5rem 8px;
+        justify-content: flex-start;
+    }
+
+    .about-card {
+        min-width: 200px;
+        width: 200px;
+        flex: 0 0 auto;
+        margin-left: 0 !important;
+        height: auto;
+    }
+
+    .projects-grid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 1.2rem;
+        width: 100%;
+        padding: 1rem 1rem 1.5rem 8px;
+        justify-content: flex-start;
+    }
+    
+    .project-card {
+        width: 280px;
+        min-width: 280px;
+        flex: 0 0 auto;
+        margin: 0;
+        height: auto;
+    }
+    
+    .project-info {
+        padding: 1rem;
+        height: auto;
+        overflow: visible;
+    }
+
+    .project-info h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .project-info p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        overflow: visible;
+        display: block;
+        max-height: none;
+    }
+
+    .project-tech {
+        gap: 0.4rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .project-tech span {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .contact-container {
+        padding: 0 1rem;
+    }
+
+    .contact-info {
+        margin: 0;
+        margin-left: 19px;
+        padding: 0 1rem;
+        width: auto;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .contact-card {
+        padding: 1rem;
+        width: 100%;
+        max-width: 350px;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        margin-left: 0;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .footer-content {
+        padding: 0 1rem;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
         justify-content: center;
+    }
+
+    .footer-social a {
+        width: 35px;
+        height: 35px;
     }
 } 
