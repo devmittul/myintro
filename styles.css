@@ -893,11 +893,8 @@ nav {
 }
 
 /* Contact Section */
-.contact .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  padding-left: 5%;
+.contact {
+  padding-bottom: 6rem;
 }
 
 .contact-container {
@@ -911,9 +908,6 @@ nav {
 
 .contact-info {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
   min-width: 300px;
   max-width: 400px;
 }
@@ -1198,8 +1192,41 @@ footer {
   }
   
   .about-cards {
-    justify-content: center;
-    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1.2rem;
+    width: 100%;
+    margin-left: 0;
+    padding: 1rem 1rem 1.5rem 0;
+    justify-content: flex-start;
+  }
+
+  .contact-container {
+    padding: 0 1rem;
+  }
+
+  .contact-info {
+    margin: 0;
+    margin-left: 10mm;
+    padding: 0 1rem;
+    width: auto;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .contact-card {
+    padding: 1rem;
+    width: 100%;
+    max-width: 350px;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    margin-left: 0;
   }
 }
 
@@ -1441,7 +1468,7 @@ footer {
         gap: 1.2rem;
         width: 100%;
         margin-left: 0;
-        padding: 1rem 1rem 1.5rem 8px;
+        padding: 1rem 1rem 1.5rem 0;
         justify-content: flex-start;
     }
 
@@ -1508,7 +1535,7 @@ footer {
 
     .contact-info {
         margin: 0;
-        margin-left: 19px;
+        margin-left: 10mm;
         padding: 0 1rem;
         width: auto;
         max-width: 400px;
