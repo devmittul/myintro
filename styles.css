@@ -538,25 +538,64 @@ nav {
   color: var(--text-secondary);
 }
 
+/* Aesthetic Scrollbar Styling */
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, var(--crayon-blue), var(--crayon-teal));
+  border-radius: 10px;
+  border: 2px solid var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, var(--crayon-teal), var(--crayon-blue));
+  box-shadow: 0 0 8px var(--crayon-teal);
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--crayon-teal) var(--bg-secondary);
+}
+
+/* Locked about cards with equal spacing */
 .about-cards {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  gap: 1.2rem;
+  justify-content: center;
+  align-items: stretch;
   width: 100%;
-  margin-left: 0;
-  padding: 1rem 1rem 1.5rem 8px;
-  justify-content: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+  gap: 20px; /* Fixed equal spacing between cards */
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scroll-snap-type: x mandatory; /* Adds snap points for better scrolling */
+}
+
+.about-cards::-webkit-scrollbar {
+  height: 8px;
+}
+
+.about-cards::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, var(--crayon-blue), var(--crayon-teal));
+  border-radius: 10px;
 }
 
 .about-card {
+  width: 200px; /* Fixed width */
   min-width: 200px;
-  width: 200px;
-  flex: 0 0 auto;
-  margin-left: 0 !important;
-  height: auto;
-  padding: 1rem;
+  flex: 0 0 200px; /* Prevent growing or shrinking */
+  padding: 1.5rem;
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -568,6 +607,8 @@ nav {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin: 0; /* Remove any margin that might affect spacing */
+  scroll-snap-align: center; /* Align with snap points */
 }
 
 .about-card:hover {
@@ -588,8 +629,8 @@ nav {
 
 .about-card p {
   color: var(--text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.4;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 /* Skills Section */
@@ -692,19 +733,22 @@ nav {
 
 /* Projects Section */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 1.2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 3.5rem; /* ~15mm spacing */
+  width: 100%;
+  padding: 1rem 1rem 1.5rem 8px;
+  justify-content: center; /* Center the projects */
 }
 
 .project-card {
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  max-width: 320px;
-  margin: 0 auto;
+  width: 320px;
+  min-width: 320px;
+  flex: 0 0 auto;
+  margin: 0;
 }
 
 .project-card:hover {
@@ -713,7 +757,7 @@ nav {
 
 .project-image {
   width: 100%;
-  height: 180px;
+  height: 200px;
   overflow: hidden;
 }
 
@@ -741,7 +785,8 @@ nav {
 .project-info p {
   color: var(--text-secondary);
   margin-bottom: 1rem;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .project-tech {
@@ -779,12 +824,21 @@ nav {
   color: var(--crayon-teal);
 }
 
+/* Projects grid scrollbar styling */
+.projects-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.projects-grid::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, var(--crayon-blue), var(--crayon-teal));
+  border-radius: 10px;
+}
+
 /* Contact Section */
 .contact .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
-  padding-left: 5%;
 }
 
 .contact-container {
@@ -793,28 +847,33 @@ nav {
   gap: 3rem;
   justify-content: space-between;
   margin: 0 auto;
-  padding-left: 3%;
 }
 
 .contact-info {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
   min-width: 300px;
   max-width: 400px;
+  padding: 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 30px var(--glass-shadow);
 }
 
-.contact-card {
+.contact-item {
   display: flex;
   align-items: center;
-  padding: 1.5rem;
-  transition: transform 0.3s ease;
-  margin-left: 15px;
+  padding: 1rem 0.5rem;
 }
 
-.contact-card:hover {
-  transform: translateX(10px);
+.contact-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--glass-border), transparent);
+  margin: 0.5rem 0;
+  width: 100%;
 }
 
 .contact-icon {
@@ -837,6 +896,7 @@ nav {
 .contact-details h3 {
   font-size: 1.2rem;
   margin-bottom: 0.3rem;
+  color: var(--text-primary);
 }
 
 .contact-details p {
@@ -847,13 +907,13 @@ nav {
   flex: 1;
   padding: 2rem;
   min-width: 300px;
-  max-width: 500px;
-}
-
-.contact-form h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
 }
 
 .form-group {
@@ -1034,6 +1094,29 @@ footer {
   
   .animated-text, .hero-image {
     text-align: center;
+    width: 100%;
+  }
+  
+  .hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+  }
+  
+  .profile-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    max-width: 100%;
+  }
+  
+  .profile-image {
+    max-width: 100%;
+    width: 300px;
+    height: 300px;
   }
   
   .name {
@@ -1075,9 +1158,194 @@ footer {
   }
   
   .about-cards {
-    justify-content: center;
-    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 20px; /* Match desktop gap for consistency */
+    width: 100%;
+    margin-left: 0;
+    padding: 1rem 1rem 1.5rem 8px;
+    justify-content: flex-start;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 8px;
   }
+
+  .about-card {
+    min-width: 200px;
+    width: 200px;
+    flex: 0 0 200px; /* Explicitly set flex basis to match width */
+    margin-left: 0 !important;
+    height: auto;
+    padding: 1.5rem;
+    scroll-snap-align: center;
+  }
+
+  .projects-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 3.5rem; /* ~15mm spacing */
+    width: 100%;
+    padding: 1rem 1rem 1.5rem 8px;
+    justify-content: center; /* Center the projects */
+  }
+  
+  .project-card {
+    width: 320px;
+    min-width: 320px;
+    flex: 0 0 auto;
+    margin: 0;
+  }
+  
+  .project-image {
+    height: 200px;
+  }
+  
+  .project-info {
+    padding: 1.2rem;
+  }
+
+  .project-info p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .project-tech {
+    gap: 0.4rem;
+  }
+
+  .project-tech span {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .contact-container {
+    padding: 0 1rem;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+  }
+
+  .contact-item {
+    padding: 0.8rem 0;
+  }
+
+  .footer-content {
+    padding: 0 1rem;
+  }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footer-social a {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Extra Small Mobile Devices - Specific dimensions adjustment */
+@media (max-width: 320px) {
+    html {
+        font-size: 12px;
+    }
+    
+    .container {
+        padding: 5px 0.5rem 0 0.5rem;
+    }
+    
+    nav {
+        padding: 0.6rem 0.5rem;
+    }
+    
+    .logo span {
+        font-size: 1.2rem;
+    }
+    
+    .hamburger {
+        font-size: 1.2rem;
+    }
+    
+    .hero {
+        padding: 5rem 0.5rem 2rem;
+    }
+    
+    .name {
+        font-size: 2rem;
+    }
+    
+    .profession {
+        font-size: 1.2rem;
+    }
+    
+    .description {
+        font-size: 0.85rem;
+        padding: 0 0.5rem;
+    }
+    
+    .profile-image {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+        width: 100%;
+        max-width: 200px;
+        margin: 1.5rem auto 0;
+    }
+    
+    .cta-primary, .cta-secondary {
+        width: 100%;
+        text-align: center;
+        padding: 0.7rem 1rem;
+    }
+    
+    .section-title h2 {
+        font-size: 2.2rem;
+    }
+    
+    .about-card {
+        width: 200px;
+        min-width: 200px;
+    }
+    
+    .project-card {
+        width: 240px;
+        min-width: 240px;
+    }
+    
+    .contact-card {
+        padding: 0.8rem;
+    }
+    
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        margin-right: 1rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 0.7rem;
+    }
+
+    .contact-info {
+        padding: 1rem;
+    }
 }
 
 @media (max-width: 992px) {
@@ -1200,10 +1468,6 @@ footer {
         gap: 2.5rem;
         flex-direction: column-reverse;
     }
-    
-    .cta-buttons {
-        margin-bottom: 2rem;
-    }
 
     .name {
         font-size: 2.5rem;
@@ -1260,110 +1524,5 @@ footer {
 
     .stat-label {
         font-size: 0.8rem;
-    }
-
-    .about-cards {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        gap: 1.2rem;
-        width: 100%;
-        margin-left: 0;
-        padding: 1rem 1rem 1.5rem 8px;
-        justify-content: flex-start;
-    }
-
-    .about-card {
-        min-width: 200px;
-        width: 200px;
-        flex: 0 0 auto;
-        margin-left: 0 !important;
-        height: auto;
-    }
-
-    .projects-grid {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        gap: 1.2rem;
-        width: 100%;
-        padding: 1rem 1rem 1.5rem 8px;
-        justify-content: flex-start;
-    }
-    
-    .project-card {
-        width: 280px;
-        min-width: 280px;
-        flex: 0 0 auto;
-        margin: 0;
-    }
-    
-    .project-info {
-        padding: 1rem;
-    }
-
-    .project-tech {
-        gap: 0.4rem;
-    }
-
-    .project-tech span {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.6rem;
-    }
-
-    .contact-container {
-        padding: 0 1rem;
-    }
-
-    .contact-info {
-        margin: 0;
-        margin-left: 19px;
-        padding: 0 1rem;
-        width: auto;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        align-items: center;
-    }
-
-    .contact-card {
-        padding: 1rem;
-        width: 100%;
-        max-width: 350px;
-        flex-direction: row;
-        align-items: center;
-        text-align: left;
-        margin-left: 0;
-    }
-
-    .contact-form {
-        padding: 1.5rem;
-    }
-
-    .form-group {
-        margin-bottom: 1.2rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        padding: 0.8rem;
-        font-size: 0.95rem;
-    }
-
-    .footer-content {
-        padding: 0 1rem;
-    }
-
-    .footer-links {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .footer-social a {
-        width: 40px;
-        height: 40px;
     }
 } 
