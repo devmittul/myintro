@@ -1386,34 +1386,37 @@ footer {
 
 /* Desktop-specific Contact Spacing */
 @media (min-width: 769px) {
+  /* Increased Contact Gap */
   .contact-container {
-    gap: 5rem; /* Increased gap for desktop */
+    gap: 5rem; 
   }
 
   /* Styled Scrollbar for About Cards */
   .about-cards {
     /* Firefox Scrollbar */
-    scrollbar-width: thin;
-    scrollbar-color: var(--crayon-teal) var(--bg-tertiary);
+    scrollbar-width: thin; 
+    scrollbar-color: var(--crayon-blue) var(--bg-secondary); /* thumb track */
 
     /* Webkit (Chrome, Safari, Edge) Scrollbar */
     &::-webkit-scrollbar {
-      height: 8px; /* Height of horizontal scrollbar */
+      height: 10px; /* Slightly thicker scrollbar */
     }
 
     &::-webkit-scrollbar-track {
-      background: var(--bg-tertiary);
+      background: var(--bg-secondary); /* Darker background for track */
       border-radius: 10px;
+      border: 1px solid var(--glass-border); /* Subtle border like glass effect */
+      margin: 0 5px; /* Add some margin to track */
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: var(--crayon-teal);
-      border-radius: 10px;
-      border: 2px solid var(--bg-tertiary); /* Creates padding around thumb */
+      background: linear-gradient(to right, var(--crayon-blue), var(--crayon-teal)); /* Gradient thumb */
+      border-radius: 10px; 
+      border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle highlight border */
     }
 
     &::-webkit-scrollbar-thumb:hover {
-      background-color: var(--crayon-blue); /* Change color on hover */
+      background: linear-gradient(to right, var(--crayon-teal), var(--crayon-blue)); /* Reverse gradient on hover */
     }
   }
 }
