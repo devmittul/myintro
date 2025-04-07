@@ -1199,7 +1199,7 @@ footer {
     gap: 1.2rem;
     width: 100%;
     margin-left: 0;
-    padding: 1rem 1rem 1.5rem 0;
+    padding: 1rem 1rem 1.5rem 2mm;
     justify-content: flex-start;
   }
 
@@ -1220,13 +1220,37 @@ footer {
   }
 
   .contact-card {
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 3mm;
     width: 100%;
     max-width: 350px;
     flex-direction: row;
     align-items: center;
     text-align: left;
     margin-left: 0;
+  }
+
+  .contact-form {
+    padding: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .footer-content {
+    padding: 0 1rem;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-social a {
+    width: 35px;
+    height: 35px;
   }
 }
 
@@ -1468,7 +1492,7 @@ footer {
         gap: 1.2rem;
         width: 100%;
         margin-left: 0;
-        padding: 1rem 1rem 1.5rem 0;
+        padding: 1rem 1rem 1.5rem 2mm;
         justify-content: flex-start;
     }
 
@@ -1546,7 +1570,7 @@ footer {
     }
 
     .contact-card {
-        padding: 1rem;
+        padding: 1rem 1rem 1rem 3mm;
         width: 100%;
         max-width: 350px;
         flex-direction: row;
