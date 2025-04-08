@@ -284,30 +284,5 @@
         }
     </script>
     <script src="script.js"></script>
-
-    <!-- Mobile Mode Popup -->
-    <div id="mobilePopup" class="mobile-popup">
-        <div class="mobile-popup-content">
-            <h3>⚡ Better Experience Available!</h3>
-            <p>Switch to Desktop Mode for the best viewing experience of this site.</p>
-            <button onclick="closeMobilePopup()">Got it!</button>
-        </div>
-    </div>
-
-    <script>
-        // Mobile popup handler
-        function checkMobile() {
-            if (window.innerWidth <= 768) {
-                document.getElementById('mobilePopup').style.display = 'flex';
-            }
-        }
-
-        function closeMobilePopup() {
-            document.getElementById('mobilePopup').style.display = 'none';
-        }
-
-        // Check on page load
-        window.onload = checkMobile;
-    </script>
 </body>
 </html> 
